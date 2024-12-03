@@ -1,10 +1,10 @@
-# Deep-DORM
+# DORM
 
 This repository contains the source code and instructions for **DORM**. You should be able to download the code and set up the environment within five minutes.
 
 ## Requirements
 
-Deep-DORM is built with Python and PyTorch. Although the code can run on any operating system, it is recommended to use Windows, which has been tested.
+DORM is built with Python and PyTorch. Although the code can run on any operating system, it is recommended to use Windows, which has been tested.
 
 The inference process has been tested with:
 
@@ -25,8 +25,8 @@ The inference process has been tested with:
     ```bash
     conda install pytorch=1.11.0 torchvision=0.12.0 torchaudio=0.11.0 cudatoolkit=11.3 -c pytorch
     ```
-4. Download the `Deep-DORM.zip` file and unpack it.
-5. Open a terminal in the `Deep-DORM` directory and install the dependencies using pip:
+4. Download the `DORM.zip` file and unpack it.
+5. Open a terminal in the `DORM` directory and install the dependencies using pip:
     ```bash
     pip install -r requirements.txt
     ```
@@ -35,7 +35,7 @@ The installation takes about 5 minutes on the tested platform, though it may tak
 
 ## Training Process
 
-1. Open a terminal in the `Deep-DORM` directory and run `train.py`; the 'Config train' panel will appear.
+1. Open a terminal in the `DORM` directory and run `train.py`; the 'Config train' panel will appear.
 
 2. Set the parameters in **Global parameters**:
 
@@ -66,10 +66,10 @@ The installation takes about 5 minutes on the tested platform, though it may tak
 
 ## Inference Process
 
-Due to data size limitations, the pre-trained models are stored [here](https://drive.google.com/file/d/15HX6jixm7O3-jy7DOvHww_g7ITBY-RXr/view?usp=sharing). You will need to download and unzip them into the `experiments` folder of the original Deep-DORM demo. Example data of various organelles for testing the model can be downloaded [here](https://drive.google.com/file/d/1P_Eun_CZ82TFFybrWGGiCLrZ7I5Q1eiP/view?usp=sharing).
+Due to data size limitations, the pre-trained models are stored [here](https://drive.google.com/file/d/15HX6jixm7O3-jy7DOvHww_g7ITBY-RXr/view?usp=sharing). You will need to download and unzip them into the `experiments` folder of the original DORM demo. Example data of various organelles for testing the model can be downloaded [here](https://drive.google.com/file/d/1P_Eun_CZ82TFFybrWGGiCLrZ7I5Q1eiP/view?usp=sharing).
 
 
-1. Open a terminal in the `Deep-DORM` directory and run `inference.py`; the 'Validation' panel will appear.
+1. Open a terminal in the `DORM` directory and run `inference.py`; the 'Validation' panel will appear.
 
 2. Set the parameters for inference:
 

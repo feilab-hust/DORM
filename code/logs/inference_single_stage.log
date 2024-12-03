@@ -1,0 +1,676 @@
+2024-11-29 15:31:01.732 | INFO<79644:186284 > | __main__:<module>:249 | Read data/model config from yaml file: options/test/test_CropPatch.yml
+2024-11-29 15:31:01.733 | INFO<79644:186284 > | __main__:<module>:250 | Yaml params: 
+  name: inference
+  use_tb_logger: True
+  model: IR_new
+  distortion: sr
+  scale: 1
+  gpu_ids: [0]
+  net_dim: 4
+  datasets:[
+    test_1:[
+      name: data1
+      mode: LQ
+      dataroot_LQ: PY_VAR2
+      max_p: 100
+      is_train: False
+      gpu_ids: [0]
+      val:[
+        min_devide_by: 8
+        crop_size_d: 1
+        crop_size_h: 30
+        crop_size_w: 2
+        xy_clear_border: 0
+        over_lap: 10
+        low_p: 0.2
+        high_p: 99.99
+        mode: 16bit
+        save_img: True
+        grids: True
+        metrics:[
+          psnr:[
+            type: calculate_psnr
+            crop_border: 0
+            test_y_channel: False
+          ]
+        ]
+      ]
+      phase: test
+      data_type: img
+    ]
+  ]
+  network_C:[
+    which_model_C: Unet
+    uptype: upsample
+    n_fea: 64
+    out_nc: 1
+    scale: 1
+  ]
+  path:[
+    pretrain_model_C: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\experiments\PY_VAR0\models\best_C.pth
+    root: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM
+    results_root: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+    log: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+  ]
+  val:[
+    min_devide_by: 8
+    crop_size_d: 1
+    crop_size_h: 30
+    crop_size_w: 2
+    xy_clear_border: 0
+    over_lap: 10
+    low_p: 0.2
+    high_p: 99.99
+    mode: 16bit
+    save_img: True
+    grids: True
+    metrics:[
+      psnr:[
+        type: calculate_psnr
+        crop_border: 0
+        test_y_channel: False
+      ]
+    ]
+  ]
+  is_train: False
+
+2024-11-29 15:31:01.736 | INFO<79644:186284 > | __main__:<module>:256 | Create results_root path: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+2024-11-29 15:32:12.035 | INFO<38920:25740 > | __main__:<module>:249 | Read data/model config from yaml file: options/test/test_CropPatch.yml
+2024-11-29 15:32:12.036 | INFO<38920:25740 > | __main__:<module>:250 | Yaml params: 
+  name: inference
+  use_tb_logger: True
+  model: IR_new
+  distortion: sr
+  scale: 1
+  gpu_ids: [0]
+  net_dim: 5
+  datasets:[
+    test_1:[
+      name: data1
+      mode: LQ
+      dataroot_LQ: J:\clb\Cell_up_load_data\sort_up_load20241129\DORM_data\Digital_DOFe_100X_mitochondrial\lr
+      max_p: 100
+      is_train: False
+      gpu_ids: [0]
+      val:[
+        min_devide_by: 8
+        crop_size_d: 1
+        crop_size_h: 30
+        crop_size_w: 2
+        xy_clear_border: 0
+        over_lap: 10
+        low_p: 0.2
+        high_p: 99.99
+        mode: 16bit
+        save_img: True
+        grids: True
+        metrics:[
+          psnr:[
+            type: calculate_psnr
+            crop_border: 0
+            test_y_channel: False
+          ]
+        ]
+      ]
+      phase: test
+      data_type: img
+    ]
+  ]
+  network_C:[
+    which_model_C: Unet
+    uptype: upsample
+    n_fea: 64
+    out_nc: 1
+    scale: 1
+  ]
+  path:[
+    pretrain_model_C: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\experiments\digital_DOFe_mitochondrial\models\best_C.pth
+    root: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM
+    results_root: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+    log: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+  ]
+  val:[
+    min_devide_by: 8
+    crop_size_d: 1
+    crop_size_h: 30
+    crop_size_w: 2
+    xy_clear_border: 0
+    over_lap: 10
+    low_p: 0.2
+    high_p: 99.99
+    mode: 16bit
+    save_img: True
+    grids: True
+    metrics:[
+      psnr:[
+        type: calculate_psnr
+        crop_border: 0
+        test_y_channel: False
+      ]
+    ]
+  ]
+  is_train: False
+
+2024-11-29 15:32:12.625 | INFO<38920:25740 > | __main__:main:191 | Number of test images in [data1]: 1
+2024-11-29 15:32:12.625 | INFO<38920:25740 > | __main__:main:193 | Testing [data1]...
+2024-11-29 15:32:16.464 | INFO<38920:25740 > | __main__:main:206 | Processing [1]/[1]: J:\clb\Cell_up_load_data\sort_up_load20241129\DORM_data\Digital_DOFe_100X_mitochondrial\lr\raw.tif...
+2024-11-29 15:32:16.465 | INFO<38920:25740 > | __main__:main:210 | Loading data and percentile(mi: 93.0, ma: 630.0) time: 3.8400s
+2024-11-29 15:32:16.676 | INFO<38920:25740 > | __main__:predict_tile:94 | Pad img (70, 634, 956) => (72, 868, 1452) with pad: {0: (0, 2), 1: (5, 229), 2: (5, 491)}
+2024-11-29 15:32:16.677 | INFO<38920:25740 > | __main__:predict_tile:102 | predict start with 60 patches...
+2024-11-29 15:32:16.678 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,0->48,0->504, o_slice: 0->72,5->43,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:23.676 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [01]/ [60] shape: (72, 48, 504) time: 6.9980s
+2024-11-29 15:32:23.676 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,0->48,484->988, o_slice: 0->72,5->43,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:23.801 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:23.803 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [02]/ [60] shape: (72, 48, 504) time: 0.1270s
+2024-11-29 15:32:23.804 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,28->76,0->504, o_slice: 0->72,33->71,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:23.921 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:23.929 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [03]/ [60] shape: (72, 48, 504) time: 0.1250s
+2024-11-29 15:32:23.929 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,28->76,484->988, o_slice: 0->72,33->71,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:24.046 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:24.048 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:24.050 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [04]/ [60] shape: (72, 48, 504) time: 0.1205s
+2024-11-29 15:32:24.050 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,56->104,0->504, o_slice: 0->72,61->99,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:24.168 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:24.176 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [05]/ [60] shape: (72, 48, 504) time: 0.1255s
+2024-11-29 15:32:24.176 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,56->104,484->988, o_slice: 0->72,61->99,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:24.294 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:24.295 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:24.297 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [06]/ [60] shape: (72, 48, 504) time: 0.1215s
+2024-11-29 15:32:24.298 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,84->132,0->504, o_slice: 0->72,89->127,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:24.415 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:24.422 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [07]/ [60] shape: (72, 48, 504) time: 0.1245s
+2024-11-29 15:32:24.423 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,84->132,484->988, o_slice: 0->72,89->127,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:24.540 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:24.541 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:24.543 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [08]/ [60] shape: (72, 48, 504) time: 0.1200s
+2024-11-29 15:32:24.543 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,112->160,0->504, o_slice: 0->72,117->155,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:24.662 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:24.668 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [09]/ [60] shape: (72, 48, 504) time: 0.1250s
+2024-11-29 15:32:24.669 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,112->160,484->988, o_slice: 0->72,117->155,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:24.787 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:24.788 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:24.790 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [10]/ [60] shape: (72, 48, 504) time: 0.1215s
+2024-11-29 15:32:24.791 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,140->188,0->504, o_slice: 0->72,145->183,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:24.907 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:24.913 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [11]/ [60] shape: (72, 48, 504) time: 0.1220s
+2024-11-29 15:32:24.914 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,140->188,484->988, o_slice: 0->72,145->183,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:25.032 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:25.033 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:25.035 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [12]/ [60] shape: (72, 48, 504) time: 0.1215s
+2024-11-29 15:32:25.035 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,168->216,0->504, o_slice: 0->72,173->211,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:25.153 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:25.160 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [13]/ [60] shape: (72, 48, 504) time: 0.1245s
+2024-11-29 15:32:25.160 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,168->216,484->988, o_slice: 0->72,173->211,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:25.278 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:25.279 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:25.281 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [14]/ [60] shape: (72, 48, 504) time: 0.1210s
+2024-11-29 15:32:25.282 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,196->244,0->504, o_slice: 0->72,201->239,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:25.399 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:25.408 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [15]/ [60] shape: (72, 48, 504) time: 0.1260s
+2024-11-29 15:32:25.408 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,196->244,484->988, o_slice: 0->72,201->239,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:25.525 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:25.527 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:25.529 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [16]/ [60] shape: (72, 48, 504) time: 0.1205s
+2024-11-29 15:32:25.529 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,224->272,0->504, o_slice: 0->72,229->267,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:25.646 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:25.652 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [17]/ [60] shape: (72, 48, 504) time: 0.1230s
+2024-11-29 15:32:25.653 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,224->272,484->988, o_slice: 0->72,229->267,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:25.770 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:25.772 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:25.773 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [18]/ [60] shape: (72, 48, 504) time: 0.1205s
+2024-11-29 15:32:25.774 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,252->300,0->504, o_slice: 0->72,257->295,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:25.891 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:25.896 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [19]/ [60] shape: (72, 48, 504) time: 0.1225s
+2024-11-29 15:32:25.897 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,252->300,484->988, o_slice: 0->72,257->295,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:26.019 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:26.020 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:26.022 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [20]/ [60] shape: (72, 48, 504) time: 0.1255s
+2024-11-29 15:32:26.023 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,280->328,0->504, o_slice: 0->72,285->323,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:26.142 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:26.148 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [21]/ [60] shape: (72, 48, 504) time: 0.1255s
+2024-11-29 15:32:26.149 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,280->328,484->988, o_slice: 0->72,285->323,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:26.267 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:26.269 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:26.271 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [22]/ [60] shape: (72, 48, 504) time: 0.1225s
+2024-11-29 15:32:26.272 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,308->356,0->504, o_slice: 0->72,313->351,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:26.389 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:26.396 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [23]/ [60] shape: (72, 48, 504) time: 0.1240s
+2024-11-29 15:32:26.396 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,308->356,484->988, o_slice: 0->72,313->351,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:26.515 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:26.517 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:26.519 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [24]/ [60] shape: (72, 48, 504) time: 0.1225s
+2024-11-29 15:32:26.519 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,336->384,0->504, o_slice: 0->72,341->379,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:26.639 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:26.647 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [25]/ [60] shape: (72, 48, 504) time: 0.1275s
+2024-11-29 15:32:26.647 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,336->384,484->988, o_slice: 0->72,341->379,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:26.767 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:26.768 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:26.770 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [26]/ [60] shape: (72, 48, 504) time: 0.1230s
+2024-11-29 15:32:26.771 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,364->412,0->504, o_slice: 0->72,369->407,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:26.888 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:26.894 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [27]/ [60] shape: (72, 48, 504) time: 0.1235s
+2024-11-29 15:32:26.895 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,364->412,484->988, o_slice: 0->72,369->407,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:27.012 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:27.013 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:27.015 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [28]/ [60] shape: (72, 48, 504) time: 0.1205s
+2024-11-29 15:32:27.016 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,392->440,0->504, o_slice: 0->72,397->435,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:27.133 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:27.140 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [29]/ [60] shape: (72, 48, 504) time: 0.1240s
+2024-11-29 15:32:27.140 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,392->440,484->988, o_slice: 0->72,397->435,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:27.257 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:27.259 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:27.261 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [30]/ [60] shape: (72, 48, 504) time: 0.1210s
+2024-11-29 15:32:27.262 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,420->468,0->504, o_slice: 0->72,425->463,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:27.378 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:27.385 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [31]/ [60] shape: (72, 48, 504) time: 0.1230s
+2024-11-29 15:32:27.385 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,420->468,484->988, o_slice: 0->72,425->463,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:27.503 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:27.504 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:27.506 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [32]/ [60] shape: (72, 48, 504) time: 0.1210s
+2024-11-29 15:32:27.507 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,448->496,0->504, o_slice: 0->72,453->491,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:27.623 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:27.629 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [33]/ [60] shape: (72, 48, 504) time: 0.1225s
+2024-11-29 15:32:27.630 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,448->496,484->988, o_slice: 0->72,453->491,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:27.747 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:27.748 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:27.750 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [34]/ [60] shape: (72, 48, 504) time: 0.1205s
+2024-11-29 15:32:27.750 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,476->524,0->504, o_slice: 0->72,481->519,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:27.867 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:27.874 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [35]/ [60] shape: (72, 48, 504) time: 0.1240s
+2024-11-29 15:32:27.875 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,476->524,484->988, o_slice: 0->72,481->519,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:27.992 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:27.993 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:27.995 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [36]/ [60] shape: (72, 48, 504) time: 0.1205s
+2024-11-29 15:32:27.996 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,504->552,0->504, o_slice: 0->72,509->547,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:28.113 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:28.120 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [37]/ [60] shape: (72, 48, 504) time: 0.1240s
+2024-11-29 15:32:28.120 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,504->552,484->988, o_slice: 0->72,509->547,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:28.238 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:28.240 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:28.242 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [38]/ [60] shape: (72, 48, 504) time: 0.1215s
+2024-11-29 15:32:28.242 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,532->580,0->504, o_slice: 0->72,537->575,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:28.359 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:28.367 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [39]/ [60] shape: (72, 48, 504) time: 0.1250s
+2024-11-29 15:32:28.368 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,532->580,484->988, o_slice: 0->72,537->575,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:28.485 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:28.487 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:28.489 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [40]/ [60] shape: (72, 48, 504) time: 0.1215s
+2024-11-29 15:32:28.490 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,560->608,0->504, o_slice: 0->72,565->603,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:28.607 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:28.616 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [41]/ [60] shape: (72, 48, 504) time: 0.1260s
+2024-11-29 15:32:28.616 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,560->608,484->988, o_slice: 0->72,565->603,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:28.734 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:28.735 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:28.738 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [42]/ [60] shape: (72, 48, 504) time: 0.1215s
+2024-11-29 15:32:28.738 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,588->636,0->504, o_slice: 0->72,593->631,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:28.855 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:28.862 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [43]/ [60] shape: (72, 48, 504) time: 0.1240s
+2024-11-29 15:32:28.863 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,588->636,484->988, o_slice: 0->72,593->631,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:28.980 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:28.981 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:28.983 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [44]/ [60] shape: (72, 48, 504) time: 0.1205s
+2024-11-29 15:32:28.984 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,616->664,0->504, o_slice: 0->72,621->659,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:29.101 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:29.109 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [45]/ [60] shape: (72, 48, 504) time: 0.1250s
+2024-11-29 15:32:29.109 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,616->664,484->988, o_slice: 0->72,621->659,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:29.226 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:29.228 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:29.230 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [46]/ [60] shape: (72, 48, 504) time: 0.1205s
+2024-11-29 15:32:29.230 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,644->692,0->504, o_slice: 0->72,649->687,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:29.347 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:29.353 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [47]/ [60] shape: (72, 48, 504) time: 0.1230s
+2024-11-29 15:32:29.354 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,644->692,484->988, o_slice: 0->72,649->687,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:29.471 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:29.473 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:29.475 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [48]/ [60] shape: (72, 48, 504) time: 0.1215s
+2024-11-29 15:32:29.476 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,672->720,0->504, o_slice: 0->72,677->715,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:29.593 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:29.600 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [49]/ [60] shape: (72, 48, 504) time: 0.1245s
+2024-11-29 15:32:29.601 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,672->720,484->988, o_slice: 0->72,677->715,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:29.718 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:29.719 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:29.721 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [50]/ [60] shape: (72, 48, 504) time: 0.1205s
+2024-11-29 15:32:29.722 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,700->748,0->504, o_slice: 0->72,705->743,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:29.839 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:29.845 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [51]/ [60] shape: (72, 48, 504) time: 0.1230s
+2024-11-29 15:32:29.845 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,700->748,484->988, o_slice: 0->72,705->743,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:29.967 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:29.969 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:29.971 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [52]/ [60] shape: (72, 48, 504) time: 0.1255s
+2024-11-29 15:32:29.971 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,728->776,0->504, o_slice: 0->72,733->771,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:30.089 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:30.098 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [53]/ [60] shape: (72, 48, 504) time: 0.1265s
+2024-11-29 15:32:30.098 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,728->776,484->988, o_slice: 0->72,733->771,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:30.216 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:30.217 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:30.219 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [54]/ [60] shape: (72, 48, 504) time: 0.1205s
+2024-11-29 15:32:30.219 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,756->804,0->504, o_slice: 0->72,761->799,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:30.336 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:30.344 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [55]/ [60] shape: (72, 48, 504) time: 0.1245s
+2024-11-29 15:32:30.344 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,756->804,484->988, o_slice: 0->72,761->799,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:30.463 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:30.465 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:30.468 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [56]/ [60] shape: (72, 48, 504) time: 0.1235s
+2024-11-29 15:32:30.468 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,784->832,0->504, o_slice: 0->72,789->827,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:30.586 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:30.593 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [57]/ [60] shape: (72, 48, 504) time: 0.1245s
+2024-11-29 15:32:30.593 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,784->832,484->988, o_slice: 0->72,789->827,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:30.711 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:30.712 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:30.714 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [58]/ [60] shape: (72, 48, 504) time: 0.1205s
+2024-11-29 15:32:30.715 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,812->860,0->504, o_slice: 0->72,817->855,5->499, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:30.832 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:30.838 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [59]/ [60] shape: (72, 48, 504) time: 0.1230s
+2024-11-29 15:32:30.838 | DEBUG<38920:25740 > | __main__:predict_tile:106 | get patch: i_slice: 0->72,812->860,484->988, o_slice: 0->72,817->855,489->983, crop_slice: 0->72,5->43,5->499
+2024-11-29 15:32:30.958 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 1
+2024-11-29 15:32:30.960 | DEBUG<38920:25740 > | __main__:predict_tile:116 | blending axes: 2
+2024-11-29 15:32:30.962 | INFO<38920:25740 > | __main__:predict_tile:134 | patch [60]/ [60] shape: (72, 48, 504) time: 0.1235s
+2024-11-29 15:32:30.997 | INFO<38920:25740 > | __main__:main:227 | result save img path: J:\clb\Cell_up_load_data\sort_up_load20241129\DORM_data\Digital_DOFe_100X_mitochondrial\lr\digital_DOFe_mitochondrial\best_SR_raw.tif
+2024-11-29 15:32:31.526 | INFO<38920:25740 > | __main__:main:232 | Tiff completed! time: 15.0615s
+2024-11-29 15:32:31.695 | INFO<38920:25740 > | __main__:main:235 | Dataset [data1] completed! time: 19.0700s
+2024-11-29 15:39:03.132 | INFO<109464:178412 > | __main__:<module>:249 | Read data/model config from yaml file: options/test/test_CropPatch.yml
+2024-11-29 15:39:03.629 | INFO<109464:178412 > | __main__:<module>:250 | Yaml params: 
+  name: inference
+  use_tb_logger: True
+  model: IR_new
+  distortion: sr
+  scale: 1
+  gpu_ids: [0]
+  net_dim: 5
+  datasets:[
+    test_1:[
+      name: data1
+      mode: LQ
+      dataroot_LQ: 
+      max_p: 100
+      is_train: False
+      gpu_ids: [0]
+      val:[
+        min_devide_by: 8
+        crop_size_d: 1
+        crop_size_h: 30
+        crop_size_w: 2
+        xy_clear_border: 0
+        over_lap: 10
+        low_p: 0.2
+        high_p: 99.99
+        mode: 16bit
+        save_img: True
+        grids: True
+        metrics:[
+          psnr:[
+            type: calculate_psnr
+            crop_border: 0
+            test_y_channel: False
+          ]
+        ]
+      ]
+      phase: test
+      data_type: img
+    ]
+  ]
+  network_C:[
+    which_model_C: Unet
+    uptype: upsample
+    n_fea: 64
+    out_nc: 1
+    scale: 1
+  ]
+  path:[
+    pretrain_model_C: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\experiments\super_resolution_mitochondrial_outer_membrane\models\best_C.pth
+    root: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM
+    results_root: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+    log: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+  ]
+  val:[
+    min_devide_by: 8
+    crop_size_d: 1
+    crop_size_h: 30
+    crop_size_w: 2
+    xy_clear_border: 0
+    over_lap: 10
+    low_p: 0.2
+    high_p: 99.99
+    mode: 16bit
+    save_img: True
+    grids: True
+    metrics:[
+      psnr:[
+        type: calculate_psnr
+        crop_border: 0
+        test_y_channel: False
+      ]
+    ]
+  ]
+  is_train: False
+
+2024-11-29 15:39:10.061 | INFO<109464:178412 > | __main__:<module>:256 | Create results_root path: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+2024-11-29 15:58:15.863 | INFO<140872:152600 > | __main__:<module>:249 | Read data/model config from yaml file: options/test/test_CropPatch.yml
+2024-11-29 15:58:15.865 | INFO<140872:152600 > | __main__:<module>:250 | Yaml params: 
+  name: inference
+  use_tb_logger: True
+  model: IR_new
+  distortion: sr
+  scale: 1
+  gpu_ids: [0]
+  net_dim: 4
+  datasets:[
+    test_1:[
+      name: data1
+      mode: LQ
+      dataroot_LQ: PY_VAR2
+      max_p: 100
+      is_train: False
+      gpu_ids: [0]
+      val:[
+        min_devide_by: 8
+        crop_size_d: 1
+        crop_size_h: 30
+        crop_size_w: 2
+        xy_clear_border: 0
+        over_lap: 10
+        low_p: 0.2
+        high_p: 99.99
+        mode: 16bit
+        save_img: True
+        grids: True
+        metrics:[
+          psnr:[
+            type: calculate_psnr
+            crop_border: 0
+            test_y_channel: False
+          ]
+        ]
+      ]
+      phase: test
+      data_type: img
+    ]
+  ]
+  network_C:[
+    which_model_C: Unet
+    uptype: upsample
+    n_fea: 64
+    out_nc: 1
+    scale: 1
+  ]
+  path:[
+    pretrain_model_C: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\experiments\PY_VAR0\models\best_C.pth
+    root: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM
+    results_root: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+    log: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+  ]
+  val:[
+    min_devide_by: 8
+    crop_size_d: 1
+    crop_size_h: 30
+    crop_size_w: 2
+    xy_clear_border: 0
+    over_lap: 10
+    low_p: 0.2
+    high_p: 99.99
+    mode: 16bit
+    save_img: True
+    grids: True
+    metrics:[
+      psnr:[
+        type: calculate_psnr
+        crop_border: 0
+        test_y_channel: False
+      ]
+    ]
+  ]
+  is_train: False
+
+2024-11-29 15:58:15.867 | INFO<140872:152600 > | __main__:<module>:256 | Create results_root path: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+2024-11-29 15:58:42.512 | INFO<185824:154500 > | __main__:<module>:249 | Read data/model config from yaml file: options/test/test_CropPatch.yml
+2024-11-29 15:58:42.513 | INFO<185824:154500 > | __main__:<module>:250 | Yaml params: 
+  name: inference
+  use_tb_logger: True
+  model: IR_new
+  distortion: sr
+  scale: 1
+  gpu_ids: [0]
+  net_dim: 4
+  datasets:[
+    test_1:[
+      name: data1
+      mode: LQ
+      dataroot_LQ: PY_VAR2
+      max_p: 100
+      is_train: False
+      gpu_ids: [0]
+      val:[
+        min_devide_by: 8
+        crop_size_d: 1
+        crop_size_h: 30
+        crop_size_w: 2
+        xy_clear_border: 0
+        over_lap: 10
+        low_p: 0.2
+        high_p: 99.99
+        mode: 16bit
+        save_img: True
+        grids: True
+        metrics:[
+          psnr:[
+            type: calculate_psnr
+            crop_border: 0
+            test_y_channel: False
+          ]
+        ]
+      ]
+      phase: test
+      data_type: img
+    ]
+  ]
+  network_C:[
+    which_model_C: Unet
+    uptype: upsample
+    n_fea: 64
+    out_nc: 1
+    scale: 1
+  ]
+  path:[
+    pretrain_model_C: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\experiments\PY_VAR0\models\best_C.pth
+    root: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM
+    results_root: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+    log: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+  ]
+  val:[
+    min_devide_by: 8
+    crop_size_d: 1
+    crop_size_h: 30
+    crop_size_w: 2
+    xy_clear_border: 0
+    over_lap: 10
+    low_p: 0.2
+    high_p: 99.99
+    mode: 16bit
+    save_img: True
+    grids: True
+    metrics:[
+      psnr:[
+        type: calculate_psnr
+        crop_border: 0
+        test_y_channel: False
+      ]
+    ]
+  ]
+  is_train: False
+
+2024-11-29 16:01:56.103 | INFO<4224:66052 > | __main__:<module>:249 | Read data/model config from yaml file: options/test/test_CropPatch.yml
+2024-11-29 16:01:56.104 | INFO<4224:66052 > | __main__:<module>:250 | Yaml params: 
+  name: inference
+  use_tb_logger: True
+  model: IR_new
+  distortion: sr
+  scale: 1
+  gpu_ids: [0]
+  net_dim: 4
+  datasets:[
+    test_1:[
+      name: data1
+      mode: LQ
+      dataroot_LQ: PY_VAR2
+      max_p: 100
+      is_train: False
+      gpu_ids: [0]
+      val:[
+        min_devide_by: 8
+        crop_size_d: 1
+        crop_size_h: 30
+        crop_size_w: 2
+        xy_clear_border: 0
+        over_lap: 10
+        low_p: 0.2
+        high_p: 99.99
+        mode: 16bit
+        save_img: True
+        grids: True
+        metrics:[
+          psnr:[
+            type: calculate_psnr
+            crop_border: 0
+            test_y_channel: False
+          ]
+        ]
+      ]
+      phase: test
+      data_type: img
+    ]
+  ]
+  network_C:[
+    which_model_C: Unet
+    uptype: upsample
+    n_fea: 64
+    out_nc: 1
+    scale: 1
+  ]
+  path:[
+    pretrain_model_C: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\experiments\PY_VAR0\models\best_C.pth
+    root: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM
+    results_root: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+    log: J:\clb\Cell_up_load_data\sort_up_load20241129\Deep_DORM\results\model_name
+  ]
+  val:[
+    min_devide_by: 8
+    crop_size_d: 1
+    crop_size_h: 30
+    crop_size_w: 2
+    xy_clear_border: 0
+    over_lap: 10
+    low_p: 0.2
+    high_p: 99.99
+    mode: 16bit
+    save_img: True
+    grids: True
+    metrics:[
+      psnr:[
+        type: calculate_psnr
+        crop_border: 0
+        test_y_channel: False
+      ]
+    ]
+  ]
+  is_train: False
+

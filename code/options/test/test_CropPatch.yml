@@ -1,0 +1,48 @@
+name: inference
+use_tb_logger: true
+model: IR_new
+distortion: sr
+scale: 1
+gpu_ids: [ 0 ]
+
+net_dim: 5
+
+datasets:
+  test_1: # the 1st test dataset
+    name: data1
+    mode: LQ
+    dataroot_LQ: ~
+    max_p: 100
+
+network_C:
+  which_model_C: Unet
+  uptype: upsample
+  n_fea: 64
+  out_nc: 1
+  scale: 1
+
+path:
+    pretrain_model_C: ~
+
+val:
+  min_devide_by: 8
+  crop_size_d: 1
+  crop_size_h: 30
+  crop_size_w: 2
+
+  xy_clear_border: 0
+
+  over_lap: 10
+  low_p: 0.2
+  high_p: 99.99
+  mode: 16bit
+
+
+  save_img: true
+  grids: true
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false

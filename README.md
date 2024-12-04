@@ -35,7 +35,7 @@ The installation takes about 5 minutes on the tested platform, though it may tak
 
 ## Training Process
 
-1. Open a terminal in the `DORM` directory and run `train.py`; the 'Config train' panel will appear.
+1. Open a terminal in the `DORM/code` directory and run `train.py`; the 'Config train' panel will appear.
 
 2. Set the parameters in **Global parameters**:
 

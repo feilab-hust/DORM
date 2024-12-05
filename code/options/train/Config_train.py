@@ -58,7 +58,7 @@ def tkinter_input():
         hr_path.set(path_hr)
 
     hr_path = tk.StringVar()
-    Label(win, text="HR path:").grid(column=0, row=g_row + 1, sticky=tk.N)
+    Label(win, text="GT path:").grid(column=0, row=g_row + 1, sticky=tk.N)
     hr_path_Choose = ttk.Entry(win, width=40, textvariable=hr_path)
     hr_path_Choose.grid(column=g_column + 1, row=g_row + 1, columnspan=lm, sticky=tk.W)
     hr_path_Choose_button = ttk.Button(win, text="Choose", command=select_HR_Path, style="test.TButton")
@@ -102,7 +102,7 @@ def tkinter_input():
     check2.grid(column=g_column + 5, row=3 + g_row, columnspan=g_row + 2, sticky=tk.W)
 
     def select_LR_Path():
-        path_lr = askdirectory(title="Please choose the LR path")
+        path_lr = askdirectory(title="Please choose the Raw data path")
         lr_path.set(path_lr)
 
     Label(win,
@@ -111,7 +111,7 @@ def tkinter_input():
 
     lr_path = tk.StringVar()
     row_2 = 5 + g_row
-    Label(win, text="LR path:").grid(column=0, row=row_2, sticky=tk.N)
+    Label(win, text="Raw data path:").grid(column=0, row=row_2, sticky=tk.N)
     lr_path_Choose = ttk.Entry(win, width=40, textvariable=lr_path)
     lr_path_Choose.grid(column=1, row=row_2, columnspan=lm, sticky=tk.W)
     lr_path_Choose_button = ttk.Button(win, text="Choose", command=select_LR_Path, style="test.TButton")

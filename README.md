@@ -40,7 +40,7 @@ The installation takes about 5 minutes on the tested platform, though it may tak
 2. Set the parameters in **Global parameters**:
 
     - **Label tag:** Add a specific tag to the currently trained network.
-    - ** GT path:** Click the ‘Choose’ button and select the folder containing GT(ground truth) data on your computer.
+    - **GT path:** Click the ‘Choose’ button and select the folder containing GT(ground truth) data on your computer.
     - **Patch size:** Set ‘Depth’ larger than 1 for digital DOFe/enhancement/SR network nets. Recommended values: Depth, Height, Width = 32, 64, 64. Set ‘Depth’ equal to 1 for ISO net; recommended values: Depth, Height, Width = 1, 64, 64.
     - **Threshold:** Default value is 0.9. For most data, this is sufficient.
     - **Gaussian noise:** Set the standard deviation of Gaussian noise added to Raw data. Default value is 0, meaning no Gaussian noise.

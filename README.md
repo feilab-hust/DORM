@@ -49,7 +49,7 @@ The installation takes about 5 minutes on the tested platform, though it may tak
 3. Set the parameters in **3D data parameters** or **ISO parameters**:
 
     - **For digital DOFe/enhancement/SR network:** Configure parameters in ‘3D data parameters’ to generate processed Raw data.
-        - **LR path:** Click the ‘Choose’ button and select raw LR data on your computer.
+        - **Raw data path:** Click the ‘Choose’ button and select the folder containing Raw data on your computer.
         - **GAN model:** Choose whether to use the GAN model during training.
 
     - **For ISO net:** Configure parameters in the ‘ISO parameters’ panel to generate synthetic anisotropic data.

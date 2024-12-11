@@ -337,10 +337,10 @@ function out = crop_and_shift_rotate(img,d_r, n_pixel, mean,n_over_lab ,shift_w,
             out = imtranslate(out, [shift_w, shift_h, 0], 'FillValues', mean);
         end
         if xy_rotate ~= 0
-            out = imrotate3(out,xy_rotate,[0 1 0],'cubic','crop');   %正数为逆时针
+            out = imrotate3(out,xy_rotate,[0 1 0],'cubic','crop');   
         end
         if xz_rate ~= 0
-            out = imrotate3(out, xz_rate,[0 0 1],'cubic','crop');   %重建之后rotate
+            out = imrotate3(out, xz_rate,[0 0 1],'cubic','crop');   
         end
 end
 

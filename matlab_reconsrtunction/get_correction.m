@@ -1,5 +1,4 @@
 function correction_matrix = get_correction(mode, factor, theta)
-    % 用于旋转，旋转矩阵
 
     c = cos(theta);
     s = sin(theta);

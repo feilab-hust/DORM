@@ -35,7 +35,7 @@ def predict_tile(model, x, net_axes_in_div_by, block_size, overlap, method="cove
                    for x in range(overlap[2], x_pad.shape[2], block_img_size[2])]
 
         for i, anchor in enumerate(anchors):
-            begin = [p - o for p, o in zip(anchor, overlap)]  
+            begin = [p - o for p, o in zip(anchor, overlap)]
             end = [p + b + o for p, b, o in zip(anchor, block_img_size, overlap)]
             if not all(i <= j for i, j in zip(end, x_pad.shape)):
                 continue
@@ -218,10 +218,10 @@ def main(opt):
             img_name = model.opt['path']['pretrain_model_C'].split('\\')[-1].split('.')[0][:-2] + '_SR_' + \
                        os.path.split(tiff_file_path)[-1]
             base_dir = test_loader.dataset.opt['dataroot_LQ']
-            # save_img_dir = os.path.join(base_dir, model_name)
-            # mkdirs(save_img_dir)
-            # save_img_path = os.path.join(save_img_dir, img_name)
-            save_img_path = tiff_file_path
+            save_img_dir = os.path.join(base_dir, model_name)
+            mkdirs(save_img_dir)
+            save_img_path = os.path.join(save_img_dir, img_name)
+            # save_img_path = tiff_file_path
             save_mip_path = ""
 
             logger.info(f"result save img path: {save_img_path}")
@@ -240,7 +240,10 @@ if __name__ == "__main__":
 
     # config_yaml_paths = ["options/test/test_CropPatch.yml"]
 
-    config_yaml_path = "/code/options/test/test_CropPatch_bat.yml"  
+    config_yaml_path = "options/test/test_CropPatch_bat.yml"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    config_yaml_path = os.path.abspath(os.path.join(script_dir, config_yaml_path))
+
     parser = argparse.ArgumentParser()
     parser.add_argument('-opt', type=str, default=config_yaml_path, help='Path to options YMAL file.')
     opt = options_bat.parse(parser.parse_args().opt, is_train=False)

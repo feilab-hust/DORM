@@ -35,13 +35,12 @@ def predict_tile(model, x, net_axes_in_div_by, block_size, overlap, method="cove
                    for x in range(overlap[2], x_pad.shape[2], block_img_size[2])]
 
         for i, anchor in enumerate(anchors):
-            begin = [p - o for p, o in zip(anchor, overlap)]  # 保证从0开始， 并且带overlap
+            begin = [p - o for p, o in zip(anchor, overlap)]  
             end = [p + b + o for p, b, o in zip(anchor, block_img_size, overlap)]
             if not all(i <= j for i, j in zip(end, x_pad.shape)):
                 continue
 
             in_slice_list.append(tuple([slice(b, e) for b, e in zip(begin, end)]))
-            # crop和out部分只取中间部分，舍弃无用pad以及边缘像素
             out_slice_list.append(
                 tuple([slice((b + o // 2) * factor, (e - o // 2) * factor) for b, e, o, in zip(begin, end, overlap)]))
             crop_slice_list.append(

@@ -387,18 +387,15 @@ function timepoint = run_all(data_path, view_path,  mip_num, mean, std, ...
 
     fileContent = fileread(yamlFilePath_bat);
     
-    % 替换路径
     fileContent = strrep(fileContent,  data_dir_old, data_dir_new);
     
     fileContent = strrep(fileContent, ck_dir_old, ck_dir_new);
     
-    % 写回文件
     fid = fopen(yamlFilePath_bat, 'w');
     fwrite(fid, fileContent);
     fclose(fid);
     
     cmd = 'C:\ProgramData\Anaconda3\envs\torch\python.exe J:\clb\Cell_up_load_data\sort_up_load20241129\DORM1205\code\inference_bat.py ';
-    % 调用system函数执行命令
     system(cmd);
 
     % result_mip = max(result_sti, [], 3);

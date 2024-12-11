@@ -241,8 +241,7 @@ if __name__ == "__main__":
 
     # config_yaml_paths = ["options/test/test_CropPatch.yml"]
 
-    config_yaml_path = "J:/clb/Cell_up_load_data/sort_up_load20241129/DORM1205/code/options/test/test_CropPatch_bat.yml"   # matlab去生成
-    # config_yaml_path = "J:/clb/Cell_up_load_data/sort_up_load20241129/DORM1205/code/options/test/test_CropPatch.yml"   # matlab去生成
+    config_yaml_path = "/code/options/test/test_CropPatch_bat.yml"  
     parser = argparse.ArgumentParser()
     parser.add_argument('-opt', type=str, default=config_yaml_path, help='Path to options YMAL file.')
     opt = options_bat.parse(parser.parse_args().opt, is_train=False)

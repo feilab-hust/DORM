@@ -1,0 +1,26 @@
+name: inference
+use_tb_logger: true
+model: IR_new
+distortion: sr
+scale: 1.0
+gpu_ids: [2.0]
+net_dim: 5.0
+datasets:
+  test_1: {name: data1, mode: LQ, dataroot_LQ: 'J:\clb\Cell_up_load_data\sort_up_load20241129\DORM1205\v_1_350_0-2476_3_1-2834_1-2_delete\Reconstruction_0\',
+    max_p: 100.0}
+network_C: {which_model_C: Unet, uptype: upsample, n_fea: 64, out_nc: 1.0, scale: 1.0}
+path: {pretrain_model_C: 'J:\clb\Cell_up_load_data\sort_up_load20241129\DORM1205\experiments\20241208_60x_Digital_DOFe_ds6_and_ds5_mask_6p5_good_lens2\models\best_C.pth'}
+val:
+  min_devide_by: 8
+  crop_size_d: 1
+  crop_size_h: 30
+  crop_size_w: 1
+  xy_clear_border: 0.0
+  over_lap: 10
+  low_p: 0.2
+  high_p: 99.99
+  mode: 16bit
+  save_img: true
+  grids: true
+  metrics:
+    psnr: {type: calculate_psnr, crop_border: 0.0, test_y_channel: false}

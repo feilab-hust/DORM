@@ -17,7 +17,7 @@ def parse(opt_path, is_train=True):
     # export CUDA_VISIBLE_DEVICES
     gpu_list = ','.join(str(x) for x in opt['gpu_ids'])
     os.environ['CUDA_VISIBLE_DEVICES'] = gpu_list
-    # os.environ['CUDA_DEVICE_MAX_CONNECTIONS'] = "0"  # 禁用GPU的P2P功能，避免使用共享内存放到GPU上进行运算
+    # os.environ['CUDA_DEVICE_MAX_CONNECTIONS'] = "0"  
 
     logger.info('export CUDA_VISIBLE_DEVICES=' + gpu_list)
 

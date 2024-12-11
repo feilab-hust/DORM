@@ -3,7 +3,7 @@ use_tb_logger: true
 model: IR_new
 distortion: sr
 scale: 1.0
-gpu_ids: [2.0]
+gpu_ids: [0]
 net_dim: 5.0
 datasets:
   test_1: {name: data1, mode: LQ, dataroot_LQ: 'J:\clb\Cell_up_load_data\sort_up_load20241129\DORM1205\v_1_350_0-2476_3_1-2834_1-2_delete\Reconstruction_0\',

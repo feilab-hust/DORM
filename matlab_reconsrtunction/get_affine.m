@@ -1,5 +1,4 @@
 function affine_matrix = get_affine(mode, factor, theta, iso)
-    % 用于移位加旋转
 
     if iso
         a = 1;

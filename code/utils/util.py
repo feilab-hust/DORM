@@ -127,7 +127,6 @@ def reverse_norm(im, mi, ma, scale=1, mode='8bit'):
     alpha = ma - mi
     beta = mi
     min_ = 0
-    # min_ = np.percentile(im, 0.2)
     im = np.clip(im, 0, np.max(im))
     if mode == '8bit':
         if ma > 255:
@@ -135,8 +134,6 @@ def reverse_norm(im, mi, ma, scale=1, mode='8bit'):
         im = (alpha * im + beta).astype(np.uint16)
         im = im.astype(np.uint8)
     elif mode == '16bit':
-        # im = (im - min_) / (max_ - min_ + 1e-10) * 65535
-        # im = im.astype(np.uint16)
         im = (scale * alpha * im + beta).astype(np.uint16)
     return im
 
@@ -149,12 +146,7 @@ def tensor2img(tensor, out_type=np.uint16, min_max=(0, 1)):
     '''
     tensor = (tensor - tensor.min()) / (tensor.max() - tensor.min())  # to range [0,1]
     tensor = tensor.squeeze().float().cpu()
-    # tensor = (tensor - min_max[0]) / (min_max[1] - min_max[0])  # to range [0,1]
     n_dim = tensor.dim()
-    # if n_dim == 4:
-    #     n_img = len(tensor)
-    #     img_np = make_grid(tensor, nrow=int(math.sqrt(n_img)), normalize=False).numpy()
-    #     img_np = np.transpose(img_np[[2, 1, 0], :, :], (1, 2, 0))  # HWC, BGR
     if n_dim == 5:
         n_img = len(tensor)
         img_np = make_grid(tensor, nrow=int(math.sqrt(n_img)), normalize=False).numpy()
@@ -162,20 +154,13 @@ def tensor2img(tensor, out_type=np.uint16, min_max=(0, 1)):
     elif n_dim == 4:
         img_np = tensor.numpy()
         img_np = img_np[0, :]  # Gray
-        # img_np = np.transpose(img_np, (1, 2, 3, 0))  # HWC, BGR
     elif n_dim == 3:
-        # img_np = tensor.numpy()
-        # img_np = np.transpose(img_np[[2, 1, 0], :, :], (1, 2, 0))  # HWC, BGR
         img_np = tensor.numpy()
-        # img_np = img_np[0, :]  # Gray
     elif n_dim == 2:
         img_np = tensor.numpy()
     else:
         raise TypeError(
             'Only support 4D, 3D and 2D tensor. But received with dimension: {:d}'.format(n_dim))
-    # if out_type == np.uint16:
-    #     img_np = reverse_norm(img_np)
-    # Important. Unlike matlab, numpy.unit8() WILL NOT round by default.
     return img_np
 
 
@@ -188,17 +173,12 @@ def save_img_t(img, mi, ma, img_path, scale=1, mode='8bit'):
 
 
 def save_img_t(img, img_path, mode='8bit'):
-    # img = np.expand_dims(img, 1)
     img = reverse_norm_t(img, mode)
     tifffile.imwrite(img_path, img)
-    # tifffile.TiffWriter(file=img_path, bigtiff=False).write(img)
-    # cv2.imwrite(img_path, img)
-
 
 def reverse_norm_t(im, mode='8bit'):
     max_ = np.max(im)
     min_ = 0
-    # min_ = np.percentile(im, 0.2)
     im = np.clip(im, min_, max_)
     if mode == '8bit':
         im = (im - min_) / (max_ - min_ + 1e-10) * 255

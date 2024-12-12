@@ -155,7 +155,6 @@ def generate_transform_data(
             _div = frac.denominator
             s_multiple_max = np.floor(d / _s)
             s_multiple = (s_multiple_max // _div) * _div
-            # print(n_digits, _s,_div,s_multiple)
             size = s_multiple * _s
             assert np.allclose(size, round(size))
             return size
@@ -171,10 +170,7 @@ def generate_transform_data(
         s = float(s)
         dec, n_digits = decimals(s)
         frac = Fraction(dec, 10 ** n_digits)
-        # a multiple of s that is also an integer number must be
-        # divisible by the denominator of the fraction that represents the decimal points
 
-        # round off decimals points if needed
         while n_digits > 0 and (d - crop_size(n_digits, frac)) / d > c:
             n_digits -= 1
             frac = Fraction(decimals(s, n_digits)[0], 10 ** n_digits)
@@ -267,7 +263,6 @@ def generate_training_data(
                 if j == 0:
                     print("apply poisson noise")
                 _lr = np.random.poisson(np.maximum(0, _lr).astype(np.int)).astype(np.float32)
-                # lr = normalize_percentile(lr)
 
             if gauss_sigma > 0:
                 if j == 0:
@@ -327,7 +322,6 @@ def generate_training_data(
                 if i == 0:
                     print("apply poisson noise")
                 lr = np.random.poisson(np.maximum(0, lr).astype(np.int)).astype(np.float32)
-                # lr = normalize_percentile(lr)
 
             if gauss_sigma > 0:
                 if i == 0:

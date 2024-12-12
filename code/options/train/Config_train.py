@@ -45,7 +45,7 @@ def tkinter_input():
 
     tk.Label(win, text="Label tag :").grid(column=0, row=1)
     label_tag = tk.StringVar()
-    label_tag.set("lightsheet_20231212_enhancement")
+    label_tag.set("Digital_DOFe")
     label_tag_entered = ttk.Entry(win, width=40, textvariable=label_tag)
     label_tag_entered.grid(column=1, row=1, columnspan=14, sticky=tk.W)
     label_tag_entered.focus()

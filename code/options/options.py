@@ -20,8 +20,8 @@ def parse(opt_path, is_train=True, model_name='model_name'):
     opt['is_train'] = is_train
     if not is_train:
         # datasets
-        label_tag, v_path, net_dim = inference_pa()
-        opt['net_dim'] = net_dim
+        label_tag, v_path = inference_pa()
+        opt['net_dim'] = 5
         for phase, dataset in opt['datasets'].items():
             phase = phase.split('_')[0]
             dataset['is_train'] = opt['is_train']
@@ -66,7 +66,6 @@ def parse(opt_path, is_train=True, model_name='model_name'):
         model_p2 = os.path.join(model_p1, label_tag)
         model_p3 = os.path.join(model_p2, 'models')
         model_p4 = os.path.join(model_p3, 'best_C.pth')
-        # model_p4 = os.path.join(model_p3, 'latest_C.pth')
         opt['path']['pretrain_model_C'] = model_p4
 
     return opt

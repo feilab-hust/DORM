@@ -123,7 +123,6 @@ class Unet(nn.Module):
     def __init__(self, num_features=32, in_ch=1, out_ch=1, uptype='subpixel', nom_='instance'):
         super(Unet, self).__init__()
 
-        # self.conv1 = DoubleConv(in_ch, num_features)
         self.conv1 = HeadConv(in_ch, num_features)
         self.pool1 = nn.MaxPool3d(2)
         self.conv2 = DoubleConv(num_features, 2 * num_features, nom_=nom_)
@@ -143,14 +142,11 @@ class Unet(nn.Module):
             pad_l = pad // 2
             pad_r = pad - pad // 2
             x = torch.nn.functional.pad(x, (0, 0, 0, 0, pad_l, pad_r), mode='reflect')
-        # print(x.shape)
-        # x = torch.nn.functional.pad(x, (2, 2, 2, 2, 2, 2), mode='reflect')
+
         c1 = self.conv1(x)
         p1 = self.pool1(c1)
-        # print(p1.shape)
         c2 = self.conv2(p1)
         p2 = self.pool2(c2)
-        # print(p2.shape)
         c3 = self.conv3(p2)
 
         up_8 = self.up8(c3)
@@ -160,7 +156,6 @@ class Unet(nn.Module):
         merge9 = torch.cat([up_9, c1], dim=1)
         c9 = self.conv9(merge9)
         c10 = self.conv10(c9)
-        # out = nn.LeakyReLU()(c10)
         out = nn.LeakyReLU(0.2, True)(c10)
         if x_raw.shape[2] % 8 > 0:
             out = out[:, :, pad_l:-pad_r]
@@ -179,8 +174,6 @@ def model_info(model):  # Plots a line-by-line description of a PyTorch model
 
 
 if __name__ == '__main__':
-    # torch.cuda.empty_cache()
-    # net = Unet(num_features=32, uptype='transpose')
     net = Unet(num_features=16, uptype='transpose')
     model_info(net)
 

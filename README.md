@@ -85,7 +85,7 @@ Due to data size limitations, the pre-trained models are stored [here](https://d
 
 ## Acknowledgements
 
-This program was developed using deep learning via PyTorch. We also acknowledge the generous contributions of Xintao Wang et al.[1] and Martin Weigert et al.[2]. You are welcome to use the code or program freely for research purposes. If you publish work that benefits from this program, please cite it as "XXX". For further inquiries, please contact us at feipeng@hust.edu.cn or chenlongbiao@hust.edu.cn.
+This program was developed using deep learning via PyTorch. We also acknowledge the generous contributions of Xintao Wang et al.[1] and Martin Weigert et al.[2]. You are welcome to use the code or program freely for research purposes. For further inquiries, please contact us at feipeng@hust.edu.cn or chenlongbiao@hust.edu.cn.
 
 ## References
 

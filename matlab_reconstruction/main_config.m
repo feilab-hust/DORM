@@ -25,7 +25,6 @@ function main_config(bath_path, mip_num, mean, std, volume_num, gpu_index, mag, 
     temp = dir(fullfile(bath_path,'v_*'));
     View_name = {temp.name};
     view_num = size(View_name, 2); 
-%     lens_distance = pixel_size * magnification*12;  % micro
 
 
     layer1_shift_h = 0;   % lens3            layer 1
@@ -68,7 +67,7 @@ function main_config(bath_path, mip_num, mean, std, volume_num, gpu_index, mag, 
     s = s-m*60;
     h = floor(m/60);
     m = m-h*60;
-    fprintf(['总耗时',num2str(h),'h',num2str(m),'m',num2str(s),'s\n'])
+    fprintf(['Total time',num2str(h),'h',num2str(m),'m',num2str(s),'s\n'])
  end
 
     

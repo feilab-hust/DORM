@@ -49,7 +49,7 @@ The inference process has been validated on the following configuration:
     - **Threshold:** Default value is 0.9. For most data, this is sufficient.
     - **Gaussian noise:** Set the standard deviation of Gaussian noise added to Raw data. Default value is 0, meaning no Gaussian noise.
     - **Poisson noise:** Check this option to add Poisson noise to Raw data; uncheck to omit it.
-    - **Raw data path:** Click the ‘Choose’ button and select the folder containing Raw data on your computer.
+    - **Raw data path:** Click the ‘Choose’ button and select the folder containing raw data on your computer.
     - **GAN model:** Choose whether to use the GAN model during training.
 
 <div align="center">
@@ -60,7 +60,7 @@ The inference process has been validated on the following configuration:
 
 ## Inference Process
 
-Due to data size limitations, the pre-trained models are stored [here](https://drive.google.com/file/d/1uLWXmoXxNQB0pUhR1EgzYKN73NxkLBjF/view?usp=sharing). You will need to download and unzip them into the `experiments` folder of the original DORM demo. Example data for testing the models on various tasks can be downloaded [here](https://drive.google.com/file/d/1FBkRGqa5LsvJEwLW29WGEEcaKYS_Qbzi/view?usp=sharing).
+Due to data size limitations, the pre-trained models are stored [here](https://drive.google.com/file/d/1uLWXmoXxNQB0pUhR1EgzYKN73NxkLBjF/view?usp=sharing). You will need to download and unzip them into the `experiments` folder of the original DORM demo. Example data for testing the models on various tasks can be downloaded [here](https://drive.google.com/file/d/1KB_5EG15eez21LWcLthrCd9kRsTN5_a0/view?usp=sharing).
 
 
 1. Open a terminal in the `DORM/code` directory and run `inference.py`; the 'Config inference' panel will appear.
@@ -68,7 +68,7 @@ Due to data size limitations, the pre-trained models are stored [here](https://d
 2. Set the parameters for inference:
 
     - **Label tag:** The label tag of the converged neural network you want to use.
-    - **Validation path:** Click the ‘Choose’ button to select the validation data you have downloaded.
+    - **Validation path:** Click the ‘Choose’ button to select the folder containing validation data you have downloaded.
 
 <div align="center">
 <img width="480" height="180" src="/fig/Config_inference.png"/>

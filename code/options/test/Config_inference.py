@@ -1,8 +1,4 @@
 import os.path
-
-# import matplotlib
-
-# matplotlib.use('TkAgg')
 from tkinter import *
 from tkinter.filedialog import askdirectory, askopenfilename
 import tkinter as tk
@@ -15,7 +11,6 @@ def new_file(testdir):
     # get the latest generated folder
     list = os.listdir(testdir)
     list.sort(key=lambda fn: os.path.getmtime(testdir + '\\' + fn))
-    # filepath = os.path.join(testdir, list[-1])
     return list[-1]
 
 

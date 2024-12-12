@@ -56,32 +56,25 @@ def insert_bn(names):
 class Discriminator_VGG_128(nn.Module):
     def __init__(self, in_nc, nf):
         super(Discriminator_VGG_128, self).__init__()
-        # [64, 128, 128, 32]
         self.conv0_0 = nn.Conv3d(in_nc, nf, 3, 1, 1, bias=True)
         self.conv0_1 = nn.Conv3d(nf, nf, 4, 2, 1, bias=False)
         self.bn0_1 = nn.BatchNorm3d(nf, affine=True)
-        # [64, 64, 64, 16]
         self.conv1_0 = nn.Conv3d(nf, nf * 2, 3, 1, 1, bias=False)
         self.bn1_0 = nn.BatchNorm3d(nf * 2, affine=True)
         self.conv1_1 = nn.Conv3d(nf * 2, nf * 2, 4, 2, 1, bias=False)
         self.bn1_1 = nn.BatchNorm3d(nf * 2, affine=True)
-        # [128, 32, 32, 8]
         self.conv2_0 = nn.Conv3d(nf * 2, nf * 4, 3, 1, 1, bias=False)
         self.bn2_0 = nn.BatchNorm3d(nf * 4, affine=True)
         self.conv2_1 = nn.Conv3d(nf * 4, nf * 4, 4, 2, 1, bias=False)
         self.bn2_1 = nn.BatchNorm3d(nf * 4, affine=True)
-        # [256, 16, 16, 4]
         self.conv3_0 = nn.Conv3d(nf * 4, nf * 8, 3, 1, 1, bias=False)
         self.bn3_0 = nn.BatchNorm3d(nf * 8, affine=True)
         self.conv3_1 = nn.Conv3d(nf * 8, nf * 8, 4, 2, 1, bias=False)
         self.bn3_1 = nn.BatchNorm3d(nf * 8, affine=True)
-        # [512, 8, 8, 2]
         self.conv4_0 = nn.Conv3d(nf * 8, nf * 8, 3, 1, 1, bias=False)
         self.bn4_0 = nn.BatchNorm3d(nf * 8, affine=True)
         self.conv4_1 = nn.Conv3d(nf * 8, nf * 8, 4, 2, 1, bias=False)
         self.bn4_1 = nn.BatchNorm3d(nf * 8, affine=True)
-        # [512, 4, 4, 4]
-        # self.linear1 = nn.Linear(512 * 4 * 2, 100)
         self.linear1 = nn.Linear(9216, 100)
         self.linear2 = nn.Linear(100, 1)
 
@@ -113,22 +106,18 @@ class Discriminator_VGG_128(nn.Module):
 class Discriminator_VGG_128_S(nn.Module):
     def __init__(self, in_nc, nf):
         super(Discriminator_VGG_128_S, self).__init__()
-        # [64, 128, 128, 32]
         self.conv0_0 = nn.Conv3d(in_nc, nf, (3, 3, 3), (1, 1, 1), 1, bias=True)
         self.conv0_1 = nn.Conv3d(nf, nf, (4, 4, 4), (2, 2, 2), 1, bias=False)
         self.bn0_1 = nn.BatchNorm3d(nf, affine=True)
-        # [64, 64, 64, 16]
         self.conv1_0 = nn.Conv3d(nf, nf * 2, (3, 3, 3), (1, 1, 1), 1, bias=False)
         self.bn1_0 = nn.BatchNorm3d(nf * 2, affine=True)
         self.conv1_1 = nn.Conv3d(nf * 2, nf * 2, (4, 4, 4), (2, 2, 2), 1, bias=False)
         self.bn1_1 = nn.BatchNorm3d(nf * 2, affine=True)
-        # [128, 32, 32, 8]
         self.conv2_0 = nn.Conv3d(nf * 2, nf * 4, (3, 3, 3), (1, 1, 1), 1, bias=False)
         self.bn2_0 = nn.BatchNorm3d(nf * 4, affine=True)
         self.conv2_1 = nn.Conv3d(nf * 4, nf * 4, (4, 4, 4), (2, 2, 2), 1, bias=False)
         self.bn2_1 = nn.BatchNorm3d(nf * 4, affine=True)
 
-        # [256, 1, 4, 4]
         self.linear1 = nn.Linear(256 * 4 * 4, 100)
         self.linear2 = nn.Linear(100, 1)
 
@@ -162,8 +151,6 @@ class NLayerDiscriminator(nn.Module):
 
         kw = kw
         padw = 1
-        # sequence = [nn.Conv3d(in_nc, nf, kernel_size=(1, kw, kw), stride=(1, 2, 2), padding=(0, 1, 1)),
-        #             nn.LeakyReLU(0.2, True)]
         sequence = [nn.Conv3d(in_nc, nf, kernel_size=(kw, kw, kw), stride=(2, 2, 2), padding=(1, 1, 1)),
                     nn.LeakyReLU(0.2, True)]
         nf_mult = 1

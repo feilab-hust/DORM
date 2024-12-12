@@ -14,21 +14,19 @@ import numpy as np
 def tkinter_input():
     win = tk.Tk()
     win.title("Config train")  # Add title
-    win.geometry('480x360')
+    win.geometry('480x240')
 
     lm = 7
 
     def clickMe():
-        nonlocal label_tag, hr_path, lr_path, psf, patch_size_d, patch_size_h, patch_size_w, z_subsample, \
+        nonlocal label_tag, hr_path, lr_path,  patch_size_d, patch_size_h, patch_size_w, \
             thre, poisson_noise, gauss_noise, Gan_model
         label_tag = label_tag_entered.get()
         hr_path = hr_path_Choose.get()
         lr_path = lr_path_Choose.get()
-        psf = psf_path_Choose.get()
         patch_size_d = patch_size_d_entered.get()
         patch_size_h = patch_size_h_entered.get()
         patch_size_w = patch_size_w_entered.get()
-        z_subsample = z_subsample_entered.get()
         thre = thre_entered.get()
         poisson_noise = poisson_noise.get()
         Gan_model = Gan_model.get()
@@ -39,9 +37,7 @@ def tkinter_input():
     style.configure("test.TButton", background="white", foreground="blue")
     action = ttk.Button(win, text="Start running", command=clickMe, style="test.TButton")
     action.grid(column=3, row=15, columnspan=2)
-    Label(win,
-          text="-------------------------------------Global parameters-------------------------------------").grid(
-        column=0, row=0, columnspan=9, sticky=tk.W)
+
 
     tk.Label(win, text="Label tag :").grid(column=0, row=1)
     label_tag = tk.StringVar()
@@ -54,7 +50,7 @@ def tkinter_input():
     g_row = 1
 
     def select_HR_Path():
-        path_hr = askdirectory(title="Please choose the HR path")
+        path_hr = askdirectory(title="Please choose the GT path")
         hr_path.set(path_hr)
 
     hr_path = tk.StringVar()
@@ -105,9 +101,6 @@ def tkinter_input():
         path_lr = askdirectory(title="Please choose the Raw data path")
         lr_path.set(path_lr)
 
-    Label(win,
-          text="------------------------------------3D data parameters------------------------------------").grid(
-        column=0, row=4 + g_row, columnspan=9, sticky=tk.N)
 
     lr_path = tk.StringVar()
     row_2 = 5 + g_row
@@ -122,39 +115,16 @@ def tkinter_input():
     # check3.select()
     check3.grid(column=1, row=row_2 + 1, columnspan=g_row + 2, sticky=tk.W)
 
-    Label(win,
-          text="--------------------------------------ISO parameters--------------------------------------").grid(
-        column=0, row=row_2 + 2, columnspan=9, sticky=tk.W)
-
-    def select_psf():
-        psf_ = askopenfilename(title="Select txt file", filetypes=(("txt files", "*.txt"),))
-        psf.set(psf_)
-
-    psf = tk.StringVar()
-    row_3 = row_2 + 3
-    psf.set(None)
-    Label(win, text="PSF file:").grid(column=0, row=row_3, sticky=tk.N)
-    psf_path_Choose = ttk.Entry(win, width=40, textvariable=psf)
-    psf_path_Choose.grid(column=1, row=row_3, columnspan=lm, sticky=tk.W)
-    psf_path_Choose_button = ttk.Button(win, text="Choose", command=select_psf, style="test.TButton")
-    psf_path_Choose_button.grid(column=6, row=row_3, sticky=tk.W)
-
-    tk.Label(win, text="Axis subsample:").grid(column=1, row=row_3 + 1, columnspan=2, sticky=tk.E)
-    z_subsample = tk.StringVar()
-    z_subsample.set(1.0)
-    z_subsample_entered = ttk.Entry(win, width=5, textvariable=z_subsample)
-    z_subsample_entered.grid(column=3, row=row_3 + 1, sticky=tk.W)
 
     win.mainloop()
-    return label_tag, hr_path, lr_path, psf, patch_size_d, patch_size_h, patch_size_w, z_subsample, \
+    return label_tag, hr_path, lr_path,  patch_size_d, patch_size_h, patch_size_w, \
         thre, poisson_noise, gauss_noise, Gan_model
 
 
 def chunking_data():
-    label_tag, hr_path, lr_path, psf, patch_size_d, patch_size_h, patch_size_w, z_subsample, \
+    label_tag, hr_path, lr_path, patch_size_d, patch_size_h, patch_size_w, \
         thre, poisson_noise, gauss_noise, Gan_model = tkinter_input()
 
-    psf_ = psf
     d = int(patch_size_d)
     h = int(patch_size_h)
     w = int(patch_size_w)
@@ -163,8 +133,6 @@ def chunking_data():
     train_img_size_lr = [h, w] if d == 1 else [d, h, w]  # [d,h,w] or [h,w]
     label_tag = str(label_tag)
     Gan_model = str(Gan_model)
-    psf = None if psf_ == 'None' else np.loadtxt(psf_)
-    z_subsample = float(z_subsample)
     threshold = float(thre)
     poisson_noise = poisson_noise
     gauss_sigma = float(gauss_noise)
@@ -174,34 +142,12 @@ def chunking_data():
         lr_path=lr_path,
         patch_size=train_img_size_lr,
         factor=1,
-        psf=psf,
-        z_sub_sample=z_subsample,
+        psf=None,
+        z_sub_sample=1,
         threshold=threshold,
         poisson_noise=poisson_noise,
         gauss_sigma=gauss_sigma,
     )
-
-    # if len(hr.shape) == 5:
-    #     for i in range(1):
-    #         plt.figure('xy_slice_%s' % str(i), figsize=(16, 4))
-    #         sl = slice(8 * i, 8 * (i + 3), 3), 0, slice(None), slice(None)
-    #         plot_some(hr[sl], lr[sl], title_list=[np.arange(sl[0].start, sl[0].stop)])
-    #         plt.show()
-    #
-    #     for i in range(1):
-    #         plt.figure('yz_slice_%s' % str(i), figsize=(16, 2))
-    #         sl = slice(8 * i, 8 * (i + 3), 3), slice(None), slice(None), 0
-    #         plot_some(hr[sl], lr[sl], title_list=[np.arange(sl[0].start, sl[0].stop)])
-    #         plt.show()
-    # else:
-    #     for i in range(2):
-    #         plt.figure('yz_slice_%s' % str(i), figsize=(16, 4))
-    #         sl = slice(8 * i, 8 * (i + 20), 20), slice(None), slice(None)
-    #         plot_some(hr[sl], lr[sl], title_list=[np.arange(sl[0].start, sl[0].stop)])
-    #         plt.show()
     return label_tag, Gan_model
 
-# if __name__ == '__main__':
-#     out = chunking_data()
 
-# kk = out

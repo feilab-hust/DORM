@@ -1,9 +1,4 @@
 from data.chunking import generate_training_data
-
-# import matplotlib
-
-# matplotlib.use('TkAgg')
-
 from tkinter import *
 from tkinter.filedialog import askdirectory, askopenfilename
 import tkinter as tk
@@ -94,7 +89,6 @@ def tkinter_input():
 
     poisson_noise = tk.IntVar()
     check2 = tk.Checkbutton(win, text="Possion noise", variable=poisson_noise)
-    # check2.select()
     check2.grid(column=g_column + 5, row=3 + g_row, columnspan=g_row + 2, sticky=tk.W)
 
     def select_LR_Path():
@@ -112,7 +106,6 @@ def tkinter_input():
 
     Gan_model = tk.IntVar()
     check3 = tk.Checkbutton(win, text="Gan model", variable=Gan_model)
-    # check3.select()
     check3.grid(column=1, row=row_2 + 1, columnspan=g_row + 2, sticky=tk.W)
 
 

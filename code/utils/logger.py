@@ -217,14 +217,14 @@ def get_logger(logger_name="", log_dir=_LOG_DIR):
             return logger
 
     new_logger = logger.bind(name=logger_name)
-    # 每周生成一个新的日志文件
+
     now = datetime.now()
     next_rotation = now.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=7)
     rotation_interval = (next_rotation - now)
 
     # rotation_interval = timedelta(seconds=60)
     logger_file_path = os.path.join(log_dir, logger_name)
-    # 每天0点生成一个新的日志文件
+
     file_format = "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level}<{process}:{thread} > | {name}:{function}:{line} | {message}"
     logger.add(logger_file_path,
                filter=lambda record: record["extra"].get("name") == logger_name,

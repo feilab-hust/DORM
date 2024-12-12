@@ -1,80 +1,73 @@
 # DORM
 
-This repository contains the source code and instructions for **DORM**. You should be able to download the code and set up the environment within five minutes.
+This repository contains the source code and instructions for **DORM**. You should be able to download the code and set up the environment.
 
 ## Requirements
 
-DORM is built with Python and PyTorch. Although the code can run on any operating system, it is recommended to use Windows, which has been tested.
+DORM is developed using MATLAB, Python, and PyTorch. The code is optimized for Windows and has been thoroughly tested in this environment.
 
-The inference process has been tested with:
+The inference process has been validated on the following configuration:
 
 - Windows 10
+- MATLAB 2022a
 - Python 3.9.12 (64-bit)
 - PyTorch 1.11.0
 - Intel Core i9-10900X CPU @ 3.70GHz
 - Nvidia GeForce RTX 3090
 
 ## Installation
+   **1. MATLAB 2022a**
 
-1. Create a new environment based on Python 3.9.12:
+   Please refer to the official MathWorks documentation for installation instructions for MATLAB 2022a. You can find it on the MathWorks website under the "Installation Guide" section.
+
+   **2.Depp learning environment**
+   1. Create a new environment based on Python 3.9.12:
     ```bash
     conda create -n DORM python=3.9.12
     ```
-2. (Optional) If your computer has a CUDA-enabled GPU, install the appropriate versions of CUDA and cuDNN.
-3. Install PyTorch:
-    ```bash
-    conda install pytorch=1.11.0 torchvision=0.12.0 torchaudio=0.11.0 cudatoolkit=11.3 -c pytorch
-    ```
-4. Download the `DORM.zip` file and unpack it.
-5. Open a terminal in the `DORM` directory and install the dependencies using pip:
-    ```bash
-    pip install -r requirements.txt
-    ```
+   2. (Optional) If your computer has a CUDA-enabled GPU, install the appropriate versions of CUDA and cuDNN.
+   3. Install PyTorch:
+       ```bash
+       conda install pytorch=1.11.0 torchvision=0.12.0 torchaudio=0.11.0 cudatoolkit=11.3 -c pytorch
+       ```
+   4. Download the `DORM.zip` file and unpack it.
+   5. Open a terminal in the `DORM` directory and install the dependencies using pip:
+       ```bash
+       pip install -r requirements.txt
+       ```
 
-The installation takes about 5 minutes on the tested platform, though it may take longer depending on network conditions.
 
 ## Training Process
 
 1. Open a terminal in the `DORM/code` directory and run `train.py`; the 'Config train' panel will appear.
 
-2. Set the parameters in **Global parameters**:
+2. Set the parameters:
 
     - **Label tag:** Add a specific tag to the currently trained network.
     - **GT path:** Click the ‘Choose’ button and select the folder containing GT(ground truth) data on your computer.
-    - **Patch size:** Set ‘Depth’ larger than 1 for digital DOFe/enhancement/SR network nets. Recommended values: Depth, Height, Width = 32, 64, 64. Set ‘Depth’ equal to 1 for ISO net; recommended values: Depth, Height, Width = 1, 64, 64.
+    - **Patch size:** Recommended values: Depth, Height, Width = 32, 64, 64.
     - **Threshold:** Default value is 0.9. For most data, this is sufficient.
     - **Gaussian noise:** Set the standard deviation of Gaussian noise added to Raw data. Default value is 0, meaning no Gaussian noise.
     - **Poisson noise:** Check this option to add Poisson noise to Raw data; uncheck to omit it.
-
-3. Set the parameters in **3D data parameters** or **ISO parameters**:
-
-    - **For digital DOFe/enhancement/SR network:** Configure parameters in ‘3D data parameters’ to generate processed Raw data.
-        - **Raw data path:** Click the ‘Choose’ button and select the folder containing Raw data on your computer.
-        - **GAN model:** Choose whether to use the GAN model during training.
-
-    - **For ISO net:** Configure parameters in the ‘ISO parameters’ panel to generate synthetic anisotropic data.
-        - **PSF file:** Add optical blurring to the generated anisotropic x-y slice. First, prepare a 2D Gaussian function (.txt file) simulating the axial PSF of your 3D datasets. Then, click ‘Choose’ to load the PSF file from your computer. The program will generate final synthetic x-y slices with axial resolution similar to the z-y slices. These degraded x-y slices will be paired with raw x-y slices for model training.
-        - **Axis subsample:** Resample the isotropic x-y slices of the 3D datasets into anisotropic ones. For example, setting this value to 2 will down-sample the x-y slices by a factor of 2 along the x direction, generating resampled x-y slices that simulate the anisotropic z-y slices of the 3D datasets.
-
-**NOTE:** When generating data for ISO-net, which processes a 3D image stack slice by slice, set the depth of patch size to 1. In this case, the ‘3D data parameters’ panel will be deactivated, and only the parameters in the ‘Global parameters’ and ‘ISO parameters’ panels will be available. Conversely, when generating data for the enhancement or SR network, where a 3D image stack is treated as a whole volume, set the depth of patch size greater than 1. In this case, the ‘ISO parameters’ panel will be deactivated, and datasets for the enhancement or SR network will be generated.
+    - **Raw data path:** Click the ‘Choose’ button and select the folder containing Raw data on your computer.
+    - **GAN model:** Choose whether to use the GAN model during training.
 
 <div align="center">
 <img width="480" height="240" src="/fig/Config_train.png"/>
 </div>
 
-4. Click the ‘Start running’ button to begin the training process.
+3Click the ‘Start running’ button to begin the training process.
 
 ## Inference Process
 
-Due to data size limitations, the pre-trained models are stored [here](https://drive.google.com/file/d/1uLWXmoXxNQB0pUhR1EgzYKN73NxkLBjF/view?usp=sharing). You will need to download and unzip them into the `experiments` folder of the original DORM demo. Example data of various organelles for testing the model can be downloaded [here](https://drive.google.com/file/d/1FBkRGqa5LsvJEwLW29WGEEcaKYS_Qbzi/view?usp=sharing).
+Due to data size limitations, the pre-trained models are stored [here](https://drive.google.com/file/d/1uLWXmoXxNQB0pUhR1EgzYKN73NxkLBjF/view?usp=sharing). You will need to download and unzip them into the `experiments` folder of the original DORM demo. Example data for testing the models on various tasks can be downloaded [here](https://drive.google.com/file/d/1FBkRGqa5LsvJEwLW29WGEEcaKYS_Qbzi/view?usp=sharing).
 
 
-1. Open a terminal in the `DORM` directory and run `inference.py`; the 'Validation' panel will appear.
+1. Open a terminal in the `DORM/code` directory and run `inference.py`; the 'Config inference' panel will appear.
 
 2. Set the parameters for inference:
 
     - **Label tag:** The label tag of the converged neural network you want to use.
-    - **Net type:** Use "ISO_net" for ISO enhancement, and "3D_net" for all other cases.
     - **Validation path:** Click the ‘Choose’ button to select the validation data you have downloaded.
 
 <div align="center">

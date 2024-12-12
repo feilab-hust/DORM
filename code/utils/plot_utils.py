@@ -25,7 +25,6 @@ def plot_history(history, *keys, **kwargs):
                 plt.gca().set_yscale('log', nonposy='clip')
         plt.xlabel('epoch')
         plt.legend(loc='best')
-    # plt.tight_layout()
     plt.show()
 
 

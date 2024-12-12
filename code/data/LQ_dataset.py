@@ -36,19 +36,17 @@ class LQDataset(data.Dataset):
         self.device = torch.device('cuda' if opt['gpu_ids'] is not None else 'cpu')
         self.data_type = self.opt['data_type']
         self.paths_LQ, self.sizes_LQ = None, None
-        self.LQ_env = None  # environment for lmdb
+        self.LQ_env = None  
         self.low_p = self.opt['val']['low_p']
         self.high_p = self.opt['val']['high_p']
         self.xy_clear_border = self.opt['val'].get('xy_clear_border', 0)
         self.mi = 0.0
         self.ma = 0.0
 
-        # read image list from lmdb or image files
         self.paths_LQ, self.sizes_LQ = util.get_image_paths(opt['data_type'], opt['dataroot_LQ'])
         assert self.paths_LQ, 'Error: LQ paths are empty.'
 
     def _init_lmdb(self):
-        # https://github.com/chainer/chainermn/issues/129
         self.LQ_env = lmdb.open(self.opt['dataroot_LQ'], readonly=True, lock=False, readahead=False,
                                 meminit=False)
 
@@ -59,7 +57,6 @@ class LQDataset(data.Dataset):
         if self.is_train:
             LQ_path = None
 
-            # get LQ image
             LQ_path = self.paths_LQ[index]
             if self.data_type == 'lmdb':
                 resolution = [int(s) for s in self.sizes_LQ[index].split('_')]

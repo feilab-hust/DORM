@@ -2,7 +2,6 @@ import os
 import os.path as osp
 import logging
 import yaml
-# from codes.utils.util import OrderedYaml
 from utils.util import OrderedYaml
 from utils.logger import get_logger
 
@@ -17,7 +16,6 @@ def parse(opt_path, is_train=True):
     # export CUDA_VISIBLE_DEVICES
     gpu_list = ','.join(str(x) for x in opt['gpu_ids'])
     os.environ['CUDA_VISIBLE_DEVICES'] = gpu_list
-    # os.environ['CUDA_DEVICE_MAX_CONNECTIONS'] = "0"  
 
     logger.info('export CUDA_VISIBLE_DEVICES=' + gpu_list)
 
@@ -39,8 +37,6 @@ def parse(opt_path, is_train=True):
             dataset['dataroot_GT'] = osp.expanduser(dataset['dataroot_GT'])
             if dataset['dataroot_GT'].endswith('lmdb'):
                 is_lmdb = True
-        # if dataset.get('dataroot_GT_bg', None) is not None:
-        #     dataset['dataroot_GT_bg'] = osp.expanduser(dataset['dataroot_GT_bg'])
         if dataset.get('dataroot_LQ', None) is not None:
             dataset['dataroot_LQ'] = osp.expanduser(dataset['dataroot_LQ'])
             if dataset['dataroot_LQ'].endswith('lmdb'):
@@ -72,11 +68,6 @@ def parse(opt_path, is_train=True):
         results_root = osp.join(opt['path']['root'], 'results', opt['name'])
         opt['path']['results_root'] = results_root
         opt['path']['log'] = results_root
-
-    # network
-    # if opt['distortion'] == 'sr':
-    #     opt['network_C']['scale'] = scale
-    #     # opt['network_VCD']['scale'] = scale
 
     return opt
 

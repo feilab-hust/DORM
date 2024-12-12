@@ -97,7 +97,6 @@ def read_img(env, path, size=None):
         max = img.max()
     else:
         img = _read_img_lmdb(env, path, size)
-    # img = img.astype(np.float32) / 255.
     img = normalize_percentile(img, 0, 100)
     max2 = img.max()
     if img.ndim == 2:
@@ -105,7 +104,6 @@ def read_img(env, path, size=None):
     # some images have 4 channels
     if img.ndim == 3:
         img = np.expand_dims(img, axis=-1)
-        # img = img[:, :, :3]
     return img
 
 

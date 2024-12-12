@@ -258,7 +258,6 @@ function timepoint = run_all(data_path, view_path,  mip_num, mean, std, ...
             end
         end
 
-%     sti_dir = fullfile(save_rootdir, '3D_stitching');
     sti_dir = save_rootdir;
     if ~exist(sti_dir, 'dir')
         mkdir(sti_dir)
@@ -272,18 +271,11 @@ function timepoint = run_all(data_path, view_path,  mip_num, mean, std, ...
             imwrite(result_sti(:,:,m), fullfile(sti_dir, sprintf('%05d.tif', i)),'WriteMode','append');
         end
     end
-    %     sti_dir_mip = fullfile(save_rootdir, 'MIPxy_3D_stitching');
-%     if ~exist(sti_dir_mip, 'dir')
-%         mkdir(sti_dir_mip)
-%     end
-%     
-%     result_mip = max(result_sti, [], 3);
-%     imwrite(result_mip, fullfile(sti_dir_mip, sprintf('%05d.tif', i)));
+
 
     rootPath = mfilename('fullpath');
     parentDir = fileparts(fileparts(rootPath));
     targetDir = fullfile(parentDir, 'code', 'options', 'test');
-    % yamlFilePath = fullfile(targetDir, 'test_CropPatch.yml');
     yamlFilePath_bat = fullfile(targetDir, 'test_CropPatch_bat.yml');
     ck_dir_new = fullfile(parentDir, 'experiments', ...
     '20241208_60x_Digital_DOFe_ds6_and_ds5_mask_6p5_good_lens2', ...
@@ -318,13 +310,10 @@ function timepoint = run_all(data_path, view_path,  mip_num, mean, std, ...
 
     dl_code = fullfile(parentDir, 'code', 'inference_bat.py');
     
-    % cmd = 'C:\ProgramData\Anaconda3\envs\torch\python.exe J:\clb\Cell_up_load_data\sort_up_load20241129\DORM1205\code\inference_bat.py ';
     dl_python = fullfile(dl_path, 'python.exe');
     cmd = sprintf('"%s" "%s"', dl_python, dl_code);
     system(cmd);
 
-    % result_mip = max(result_sti, [], 3);
-    % imwrite(result_mip, fullfile(sti_dir_mip, sprintf('%05d.tif', i)));
     end
 end
 

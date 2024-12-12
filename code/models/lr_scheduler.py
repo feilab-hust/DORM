@@ -60,8 +60,3 @@ class CosineAnnealingLR_Restart(_LRScheduler):
                 (1 + math.cos(math.pi * ((self.last_epoch - self.last_restart) - 1) / self.T_max)) *
                 (group['lr'] - self.eta_min) + self.eta_min
                 for group in self.optimizer.param_groups]
-
-
-# if __name__ == "__main__":
-#     optimizer = torch.optim.Adam([torch.zeros(3, 64, 3, 3)], lr=2e-4, weight_decay=0,
-#                                  betas=(0.9, 0.99))

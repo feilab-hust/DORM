@@ -28,10 +28,9 @@ def Inference_cfg():
     lastet_model = new_file(model_root_path)
 
     def clickMe():
-        nonlocal label_tag, v_path, net_type
+        nonlocal label_tag, v_path
         label_tag = label_tag_entered.get()
         v_path = v_path_Choose.get()
-        net_type = net_type_Chosen.get()
         win.destroy()
 
     style = ttk.Style()
@@ -48,13 +47,6 @@ def Inference_cfg():
 
     g_row = 1
 
-    ttk.Label(win, text="Net type:").grid(column=0, row=g_row + 3, sticky=tk.W)
-    net_type = tk.StringVar()
-    net_type_Chosen = ttk.Combobox(win, width=13, textvariable=net_type, state='readonly')
-    net_type_Chosen['values'] = ('3D_net', 'ISO_net')
-    net_type_Chosen.grid(column=1, row=g_row + 3, columnspan=8, sticky=tk.W)
-    net_type_Chosen.current(0)
-
     def select_LR_Path():
         path_lr = askdirectory(title="Please choose the Validation path")
         v_path.set(path_lr)
@@ -68,18 +60,16 @@ def Inference_cfg():
     lr_path_Choose_button.grid(column=12, row=row_2, sticky=tk.E)
 
     win.mainloop()
-    return label_tag, v_path, net_type
+    return label_tag, v_path
 
 
 def inference_pa():
-    label_tag, v_path, net_type = Inference_cfg()
+    label_tag, v_path = Inference_cfg()
     label_tag = str(label_tag)
     v_path = str(v_path)
-    net_dim = 5 if net_type == '3D_net' else 4
-    return label_tag, v_path, net_dim
+    return label_tag, v_path
 
 
 if __name__ == '__main__':
-    label_tag, v_path,net_dim = inference_pa()
+    label_tag, v_path = inference_pa()
 
-# kk = out

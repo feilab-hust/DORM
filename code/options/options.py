@@ -2,7 +2,6 @@ import os
 import os.path as osp
 import logging
 import yaml
-# from codes.utils.util import OrderedYaml
 from utils.util import OrderedYaml
 from options.test.Config_inference import inference_pa
 

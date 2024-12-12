@@ -196,7 +196,7 @@ def get_env_info():
 
 def get_logger(logger_name="", log_dir=_LOG_DIR):
     if not os.path.exists(log_dir):
-        os.makedirs(log_dir)
+        os.makedirs(log_dir, exist_ok = True)
 
     if logger_name and not logger_name.endswith('.log'):
         logger_name += '.log'

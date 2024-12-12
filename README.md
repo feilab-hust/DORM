@@ -59,7 +59,7 @@ The installation takes about 5 minutes on the tested platform, though it may tak
 **NOTE:** When generating data for ISO-net, which processes a 3D image stack slice by slice, set the depth of patch size to 1. In this case, the ‘3D data parameters’ panel will be deactivated, and only the parameters in the ‘Global parameters’ and ‘ISO parameters’ panels will be available. Conversely, when generating data for the enhancement or SR network, where a 3D image stack is treated as a whole volume, set the depth of patch size greater than 1. In this case, the ‘ISO parameters’ panel will be deactivated, and datasets for the enhancement or SR network will be generated.
 
 <div align="center">
-<img width="480" height="360" src="/fig/Config_train.png"/>
+<img width="480" height="240" src="/fig/Config_train.png"/>
 </div>
 
 4. Click the ‘Start running’ button to begin the training process.

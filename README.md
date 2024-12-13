@@ -67,7 +67,7 @@ Due to data size limitations, the pre-trained models are stored [here](https://d
 
 2. Set the parameters for inference:
 
-    - **Label tag:** The label tag of the converged neural network you want to use.
+    - **Label tag:** The label tag of the converged neural network you want to use, such as '3D_restoration_network_microtubules', 'Digital_DOFe_mitochondria', or 'Super_resolution_mitochondrial_outer_membrane'.
     - **Validation path:** Click the ‘Choose’ button to select the folder containing validation data you have downloaded.
 
 <div align="center">

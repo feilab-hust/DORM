@@ -15,6 +15,7 @@ The inference process has been validated on the following configuration:
 - Intel Core i9-10900X CPU @ 3.70GHz
 - Nvidia GeForce RTX 3090
 
+
 ## Installation
    **1. MATLAB 2022a**
 
@@ -22,9 +23,9 @@ The inference process has been validated on the following configuration:
 
    **2.Depp learning environment**
    1. Create a new environment based on Python 3.9.12:
-    ```bash
-    conda create -n DORM python=3.9.12
-    ```
+      ```bash
+      conda create -n DORM python=3.9.12
+      ```
    2. (Optional) If your computer has a CUDA-enabled GPU, install the appropriate versions of CUDA and cuDNN.
    3. Install PyTorch:
        ```bash
@@ -35,6 +36,22 @@ The inference process has been validated on the following configuration:
        ```bash
        pip install -r requirements.txt
        ```
+
+The installation takes about 5 minutes on the tested platform, though it may take longer depending on network conditions.
+
+## Image reconstruction
+1. Paste the [elastix 5.2.0](https://github.com/SuperElastix/elastix/releases) files into the `DORM-main/matlab_reconstrution/main/elastix` directory
+2. Open a terminal in the `DORM-main/matlab_reconstrution` directory and run `reconstruction_app.mlapp`; the APP panel will appear.
+3. Set the parameters in **Global parameters**:
+    - **Folder:** Click the ‘Browse’ button and select the folder containing sequential slices.
+    - **Noise Mean & Std:** Gaussian noise is used to fill the gaps between images. The noise mean and standard deviation (Std) can be specified.
+    - **Magnification:** Objective magnification. (default 60)
+
+<div align="center">
+<img width="454" height="258" src="/fig/Config_reconstruction.png"/>
+</div>
+
+4. Click the ‘Run’ button to begin the image reconstruction.
 
 
 ## Training Process

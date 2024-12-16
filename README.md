@@ -40,8 +40,8 @@ The inference process has been validated on the following configuration:
 The installation takes about 5 minutes on the tested platform, though it may take longer depending on network conditions.
 
 ## Image reconstruction
-1. Paste the [elastix 5.2.0](https://github.com/SuperElastix/elastix/releases) files into the `DORM-main/matlab_reconstrution/main/elastix` directory
-2. Open a terminal in the `DORM-main/matlab_reconstrution` directory and run `reconstruction_app.mlapp`; the APP panel will appear.
+1. Paste the [elastix 5.2.0](https://github.com/SuperElastix/elastix/releases) files into the `DORM/matlab_reconstrution/main/elastix` directory
+2. Open a terminal in the `DORM/matlab_reconstrution` directory and run `reconstruction_app.mlapp`; the APP panel will appear.
 3. Set the parameters in **Global parameters**:
     - **Folder:** Click the ‘Browse’ button and select the folder containing sequential slices.
     - **Noise Mean & Std:** Gaussian noise is used to fill the gaps between images. The noise mean and standard deviation (Std) can be specified.

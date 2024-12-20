@@ -218,7 +218,7 @@ def main(opt):
             img_name = model.opt['path']['pretrain_model_C'].split('\\')[-1].split('.')[0][:-2] + '_SR_' + \
                        os.path.split(tiff_file_path)[-1]
             base_dir = test_loader.dataset.opt['dataroot_LQ']
-            save_img_dir = os.path.join(base_dir, model_name)
+            save_img_dir = os.path.join(base_dir, 'DOF')
             mkdirs(save_img_dir)
             save_img_path = os.path.join(save_img_dir, img_name)
             # save_img_path = tiff_file_path
